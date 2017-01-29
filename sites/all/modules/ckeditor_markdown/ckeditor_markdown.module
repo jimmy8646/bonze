@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Enables Markdown Plugin for CKEditor.
+ */
+
+/**
+ * Implements hook_ckeditor_plugin().
+ */
+function ckeditor_markdown_ckeditor_plugin() {
+  $module_path = drupal_get_path('module', 'ckeditor_markdown');
+
+  $plugins = array();
+  $plugins['markdown'] = array(
+    'name' => 'markdown',
+    'desc' => t('Plugin to convert to markdown mode and highlight syntax.'),
+    'path' => $module_path . '/plugins/markdown/',
+    'buttons' => array(
+      'Markdown' => array(
+        'icon' => 'icons/markdown.png',
+        'label' => 'Markdown',
+      )
+    ),
+    'default' => 'f',
+  );
+
+  return $plugins;
+}

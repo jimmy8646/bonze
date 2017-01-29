@@ -1,0 +1,48 @@
+.field-tag_mode-1{
+  display: block;
+  border-bottom: 1px solid #efeaea;
+
+  .field-items {
+      @include display-flex;
+      @include flex-wrap(wrap);
+
+
+      .field-item {
+          position: relative;
+          margin-top: 5px;
+          margin-bottom: 5px;
+
+          &:not(:first-child) {
+              margin-left: 10px;
+          }
+
+          &:after {
+              content: "";
+              display: block;
+              position: absolute;
+              @include size(100%);
+              right: -3px;
+              bottom: -3px;
+              background: #DCDCDC;
+              z-index: 1;
+          }
+
+          a {
+              display: block;
+              position: relative;
+              z-index: 2;
+              background: #ffffff;
+              padding: 10px;
+              box-sizing: border-box;
+              border: 1px solid;
+              white-space: nowrap;
+              @include transition(0.3s);
+
+              &:hover {
+                  color: #ffffff;
+                  background: get-bg-color(m1);
+              }
+          }
+      }
+  }
+}

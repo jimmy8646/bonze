@@ -1,0 +1,13 @@
+#header{
+  position: relative;
+  z-index: 20;
+  background: #ffffff;
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid #E8E9EB;
+  .region-wrapper{
+    @include display-flex;
+    @include align-items(center);
+    padding: 5px 40px;
+  }
+}

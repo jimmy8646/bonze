@@ -1,0 +1,8 @@
+.scroll_header {
+  position: fixed!important;
+  top: -20%!important;
+  @include transition(0.6s);
+}
+.scroll_header_show{
+  top: 0%!important;
+}

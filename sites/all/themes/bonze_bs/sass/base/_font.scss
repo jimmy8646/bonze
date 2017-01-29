@@ -1,0 +1,99 @@
+body {
+    font-family: "Microsoft YaHei", arial,sans-serif;
+    color: #444444;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: #111111;
+    font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: Georgia, Palatino, serif;
+}
+
+h1#page-title {
+    display: block;
+    color: #2A3E67;
+}
+
+h1 {
+    @include rwd-screen(pc,pad) {
+        font-size: 48px;
+        line-height: 74px;
+    }
+    @include rwd-screen(small-pad,phone) {
+        font-size: 36px;
+        line-height: 52px;
+    }
+}
+
+h2 {
+    @include rwd-screen(pc,pad) {
+        font-size: 36px;
+        line-height: 52px;
+    }
+    @include rwd-screen(small-pad,phone) {
+        font-size: 24px;
+        line-height: 30px;
+    }
+}
+
+h1,
+h2 {
+    border-bottom: 1px solid #EFEAEA;
+    padding-bottom: 10px;
+}
+
+.field-name-title h2,
+h3 {
+    @include rwd-screen(pc,pad) {
+        font-size: 24px;
+        line-height: 30px;
+    }
+    @include rwd-screen(small-pad,phone) {
+        font-size: 21px;
+        line-height: 26px;
+    }
+}
+
+h4 {
+    @include rwd-screen(pc,pad) {
+        font-size: 21px;
+        line-height: 26px;
+    }
+    @include rwd-screen(small-pad,phone) {
+        font-size: 18px;
+    }
+}
+
+h5 {
+    @include rwd-screen(pc,pad) {
+        font-size: 18px;
+        list-style: 23px;
+    }
+    @include rwd-screen(small-pad,phone) {
+        font-size: 16px;
+        list-style: 20px;
+    }
+}
+
+a {
+    color: #6684A3;
+    @include transition(0.2s);
+    opacity: 1;
+    &:hover{
+    opacity: 0.5;
+    }
+}
+
+a.more-link {
+    color: #ff6600;
+}

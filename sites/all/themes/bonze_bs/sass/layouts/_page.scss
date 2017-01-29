@@ -1,0 +1,45 @@
+body.sidebar-first {
+    #page {
+      // -moz-box-shadow:    2px 2px 2px 3px #EFEAEA;
+      // -webkit-box-shadow: 2px 2px 2px 3px #EFEAEA;
+      // box-shadow:         1px 1px 1px 1px rgba(0,0,0,0.1);
+        #main {
+            @include display-flex;
+
+            > * {
+                max-width: 100%;
+            }
+
+            #content {
+                position: relative;
+                background: #ffffff;
+                display: block;
+                box-sizing: border-box;
+                @include flex-scale(1);
+                @include rwd-screen(pc,pad) {
+                    padding: 40px 80px;
+                }
+                @include rwd-screen(small-pad,phone) {
+                    padding: 40px 20px;
+                }
+            }
+
+            .sidebars {
+              @include rwd-screen(phone){
+                width: 0px;
+              }
+                .region-sidebar-first {
+                }
+            }
+        }
+    }
+}
+
+body.not-front{
+  #content{
+    >.region-wrapper{
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+  }
+}

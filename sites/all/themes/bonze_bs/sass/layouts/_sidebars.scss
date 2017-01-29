@@ -1,0 +1,48 @@
+body.sidebar-first {
+    .sidebars {
+        //background: #ffffff;
+        .region-sidebar-first {
+            display: block;
+            padding: 40px 0;
+            box-sizing: border-box;
+            position: relative;
+            // &:after {
+            //     content: "";
+            //     display: block;
+            //     @include size(2px,100%);
+            //     position: absolute;
+            //     top: 0;
+            //     right: 0;
+            //     background: #efeaea;
+            //     @include box-shadow(25px 15px 20px 20px rgba(0,0,0,0.2));
+            // }
+        }
+
+        .region-sidebar-first {
+            .fake_scrollBar {
+                .wrapper {
+                    .scroll-nav {
+                        border-radius: 100px;
+                        opacity: 0;
+                        @include transition(0.2s);
+                    }
+                }
+            }
+
+            &:hover {
+                .fake_scrollBar {
+                    .wrapper {
+                        .scroll-nav {
+                            opacity: 0.6;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+//chrome scrollbar bug
+
+.region-sidebar-first::-webkit-scrollbar {
+    visibility: hidden;
+}

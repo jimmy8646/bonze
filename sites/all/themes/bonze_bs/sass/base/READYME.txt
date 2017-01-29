@@ -1,0 +1,62 @@
+base
+
+
+************************************************************
+                        __global.scss
+************************************************************
+此區 code 為優先
+
+
+************************************************************
+                        colors.scss
+************************************************************
+
+
+為設置color的色碼陣列的變數
+$bg-color: ( m1:#FCB040,m2:#ED5152,b1:#000000,b2:#ffffff,c1:#DEDEDE,c2:#74CED8);
+$br-color: ( m1:#FCB040,m2:#ED5152,b1:#000000,b2:#ffffff,c1:#DEDEDE,c2:#74CED8);
+$font-color: ( m1:#FCB040,m2:#ED5152,b1:#000000,b2:#ffffff,c1:#DEDEDE,c2:#74CED8);
+
+
+$bg-color:背景色     原則：只針對background屬性使用
+$br-color:邊線色     原則：只針對border屬性使用
+$font-color:文字色   原則：只針對color屬性使用
+
+
+m:main-color（主要色系）
+b:basic-color(基本色系 黑白 兩色)
+c：其於顏色 最好是以色碼 深 至 淺 排序
+
+使用時：
+example:
+
+ div{
+    background:get-bg-color(c1);  //提取 $bg-color裡的 c1 色碼
+    border: 1px solid get-bg-color(m1); //提取 $br-color裡的 m1 色碼
+    color:get-bg-color(b1); //提取 $font-color裡的 b1 色碼
+ }
+
+
+
+************************************************************
+                        _attribute.scss
+************************************************************
+
+為設置css屬性的整體變數
+
+example:
+
+.padding{
+   padding:20px;
+}
+
+引用方式:
+--直接對應的區塊加入padding的 class name
+--對應的位置使用scss語法  @extend .padding;
+
+以上都可直接繼承 .padding的padding 20px 的codding
+
+
+************************************************************
+                        font.scss
+************************************************************

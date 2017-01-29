@@ -1,0 +1,3 @@
+[22-Jan-2017 14:37:43 Asia/Chongqing] PHP Fatal error:  Class 'Drupal\user\Entity\User' not found in /home1/undoim/.composer/vendor/drush/drush/lib/Drush/Boot/DrupalBoot.php on line 571
+[22-Jan-2017 14:37:48 Asia/Chongqing] PHP Fatal error:  Class 'Drupal\user\Entity\User' not found in /home1/undoim/.composer/vendor/drush/drush/lib/Drush/Boot/DrupalBoot.php on line 571
+[22-Jan-2017 14:39:39 Asia/Chongqing] PHP Fatal error:  Class 'Drupal\user\Entity\User' not found in /home1/undoim/.composer/vendor/drush/drush/lib/Drush/Boot/DrupalBoot.php on line 571

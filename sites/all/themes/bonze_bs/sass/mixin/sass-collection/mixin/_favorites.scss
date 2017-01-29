@@ -1,0 +1,131 @@
+/*************************************
+                            favorites
+**************************************/
+//瀏覽標籤
+@mixin prefix($name, $argument...) {
+    -webkit-#{$name}: #{$argument};
+    -ms-#{$name}: #{$argument};
+    -moz-#{$name}: #{$argument};
+    -o-#{$name}: #{$argument};
+    #{$name}: #{$argument};
+}
+//清除浮動---------------------------------------------------
+@mixin clearfix {
+    *zoom: 1;
+    &:after,
+    &:before {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+// 截取文本text-overflow
+@mixin text-overflow($substract:0) {
+    //`$substract`单位为%
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100% - $substract;
+}
+// size width height
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+//加入icon
+@mixin inser-icon($src,$direction,$width,$height,$margin:null) {
+    @if $direction== "top" {
+        @include display-flex;
+        @include align-items(center);
+        @include flex-direction(column);
+        &:before {
+            content: "";
+            display: block;
+            width: $width;
+            height: $height;
+            min-width: $width;
+            min-height: $height;
+            background: url($src)no-repeat;
+            background-position: center;
+            background-size: 100%;
+            margin-bottom: $margin;
+        }
+    }
+    @if $direction== "bottom" {
+        @include display-flex;
+        @include align-items(center);
+        @include flex-direction(column);
+        &:after {
+            content: "";
+            display: block;
+            width: $width;
+            height: $height;
+            min-width: $width;
+            min-height: $height;
+            background: url($src)no-repeat;
+            background-position: center;
+            background-size: 100%;
+            margin-top: $margin;
+        }
+    }
+    @if $direction== "left" {
+        @include display-flex;
+        @include align-items(center);
+        &:before {
+            content: "";
+            display: block;
+            width: $width;
+            height: $height;
+            min-width: $width;
+            min-height: $height;
+            background: url($src)no-repeat;
+            background-position: center;
+            background-size: 100%;
+            margin-right: $margin;
+        }
+    }
+    @if $direction== "right" {
+        @include display-flex;
+        @include align-items(center);
+        &:after {
+            content: "";
+            display: block;
+            width: $width;
+            height: $height;
+            min-width: $width;
+            min-height: $height;
+            background: url($src)no-repeat;
+            background-position: center;
+            margin-left: $margin;
+        }
+    }
+}
+//陰影效果
+@mixin box-shadow($shadow-value) {
+    -webkit-box-shadow: $shadow-value;
+    -moz-box-shadow: $shadow-value;
+    box-shadow: $shadow-value;
+}
+//文字3D
+@mixin threedText($depth, $startColor, $colorTransitionIncrementor, $xDirection, $yDirection) {
+    $shadow: '';
+    @for $i from 0 to $depth {
+         @if (($depth - $i) > 1){
+            $shadow: $shadow + ($xDirection * $i) + 'px ' + ($yDirection * $i) + 'px ' + '0px ' + ($startColor + ($i * $colorTransitionIncrementor)) + ',';
+        }
+        @else {
+            $shadow: $shadow + ($xDirection * $i) + 'px ' + ($yDirection * $i) + 'px ' + '0px ' + ($startColor + ($i * $colorTransitionIncrementor));
+        }
+    }
+    text-shadow: unquote($shadow);
+}
+
+//修正transitionfix
+@mixin transitionfix() {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0)
+}

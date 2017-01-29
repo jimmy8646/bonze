@@ -1,0 +1,8 @@
+.transform_link-circle {
+  a {
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+    @include transitionfix();
+  }
+}

@@ -1,0 +1,26 @@
+//for scroll lock js
+#footer {
+    position: relative;
+    z-index: 1;
+    background: #ffffff;
+}
+
+
+#footer{
+display: block;
+box-sizing: border-box;
+padding: 80px 40px;
+@include display-flex;
+@include justify-content(center);
+
+&:before{
+  content:"";
+  position: absolute;
+  @include size(100%,2px);
+  display: block;
+  background: #EFEAEA;
+  left: 0px;
+  top: 0px;
+
+}
+}

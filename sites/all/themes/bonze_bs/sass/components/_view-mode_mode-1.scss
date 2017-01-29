@@ -1,0 +1,44 @@
+.view-mode-vm_1 {
+    //mode layout---------------------------------------------------------------
+    position: relative;
+    @include rwd-screen(pc) {
+         @include child-margin(40px,0px);
+    }
+    @include rwd-screen(pad,phone) {
+         @include child-margin(40px,15px);
+    }
+    //perfile info
+    .perfile-wrapper {}
+    //artcle info
+    .content-wrapper {
+        position: relative;
+        @include child-margin(0px,10px);
+        @extend .border-mode-1;
+        border-radius: 5px;
+    }
+    //field style---------------------------------------------------------------
+    .field-name-calendar {
+        @include display-flex;
+        @include justify-content(center);
+        @include align-items(center);
+    }
+
+    .field-name-ds-user-picture {
+        border: 5px solid #98ACC0;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+        @include rwd-coding(max-width,100%,80px,60px,60px);
+        @include rwd-coding(border-width,5px,3px,3px,2px);
+    }
+
+    .field-name-author {
+        text-align: center;
+        padding: 10px;
+        @include rwd-coding(display,block,none,none,none);
+    }
+
+    .field-name-field-tag {
+        @extend .field-tag_mode-1;
+    }
+}

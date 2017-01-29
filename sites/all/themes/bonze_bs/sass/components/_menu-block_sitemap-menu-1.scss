@@ -1,0 +1,43 @@
+.menu-block_sitemap-menu-1 {
+    position: relative;
+    display: block;
+    width: 100%;
+
+    h2.block__title {
+        //border: none;
+        margin-bottom: 40px;
+    }
+
+    .menu-block-wrapper {
+        @include child-margin(20px);
+
+        ul.menu {
+            padding: 0;
+
+            li.menu__item {
+                display: block;
+            }
+        }
+
+        > ul.menu {
+            @include display-flex;
+            @include flex-wrap(wrap);
+            @include justify-content(space-between);
+            max-width: 1440px;
+            margin: 0 auto;
+
+            > li.menu__item {
+                font-size: 20px;
+                @include child-margin(0px,5px);
+
+                > ul.menu {
+                    margin-top: 15px;
+
+                    > li.menu__item {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}

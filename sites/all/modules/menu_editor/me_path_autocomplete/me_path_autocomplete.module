@@ -1,0 +1,173 @@
+<?php
+
+/**
+ * @file
+ * Find node paths on menu item creation via autocomplete.
+ *
+ * This is a shameless clone of
+ * http://drupal.org/project/mpac
+ * by stBorchert
+ */
+
+/**
+ * Implements hook_menu().
+ *
+ * @return array
+ *   An array of menu items.
+ */
+function me_path_autocomplete_menu() {
+  $items = array();
+
+  $items['mepac/autocomplete'] = array(
+    'title' => 'Menu path autocomplete',
+    'description' => 'Autocomplete callback for menu path autocomplete',
+    /* @see me_path_autocomplete() */
+    'page callback' => 'me_path_autocomplete',
+    'access callback' => 'user_access',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Page callback for 'mepac/autocomplete'.
+ *
+ * Finds nodes and URL aliases based on title.
+ * Sets a http header, and prints json output.
+ *
+ * @param string $string
+ *   Title of element to find.
+ *
+ * @see mpac_autocomplete()
+ */
+function me_path_autocomplete($string = NULL) {
+  $args = func_get_args();
+  $string = implode('/', $args);
+
+  $matches = _me_path_autocomplete_get_matches($string);
+
+  drupal_json_output($matches);
+}
+
+/**
+ * @param string $string
+ *
+ * @return string[]
+ */
+function _me_path_autocomplete_get_matches($string) {
+  $string = strtolower($string);
+
+  // @todo Do we need to filter this?
+  // See https://www.drupal.org/node/2785261 in mpac issue queue.
+  # $title = filter_xss_admin($string);
+
+  $matches = _me_path_autocomplete_get_matches_for_placeholders($string);
+
+  if ($string === '') {
+    return $matches;
+  }
+
+  $like_placeholder = (strlen($string) > 3) ? "%" . db_like($string) . "%" : db_like($string) . "%";
+
+  $matches += _me_path_autocomplete_get_matches_for_nodes($like_placeholder);
+  $matches += _me_path_autocomplete_get_matches_for_aliases($like_placeholder);
+
+  return $matches;
+}
+
+/**
+ * @param string $string
+ *
+ * @return string[]
+ *
+ * @see _mpac_get_matches_for_nodes()
+ */
+function _me_path_autocomplete_get_matches_for_placeholders($string) {
+
+  $matches = array();
+  /* @see hook_menu_editor_placeholders() */
+  foreach (module_invoke_all('menu_editor_placeholders') as $placeholder_code => $placeholder_path) {
+    if ($string === '' || false !== strpos($placeholder_code, $string)) {
+      $matches[$placeholder_code] = htmlentities($placeholder_code);
+    }
+  }
+
+  return $matches;
+}
+
+/**
+ * @param string $like_placeholder
+ *
+ * @return string[]
+ *
+ * @see _mpac_get_matches_for_nodes()
+ */
+function _me_path_autocomplete_get_matches_for_nodes($like_placeholder) {
+
+  $q = db_select('node', 'n');
+  $q->fields('n');
+  $q->condition('title', $like_placeholder, 'LIKE');
+  $q->range(0, 8);
+
+  $matches = array();
+  foreach ($q->execute() as $node) {
+    // Add node path and title to list.
+    if (node_access('view', $node) && $node->status) {
+      $node_title = check_plain($node->title);
+      $nid = $node->nid;
+      $lang = $node->language !== LANGUAGE_NONE ? ($node->language . ': ') : '';
+      $matches['node/'. $node->nid] = $lang . "$node_title [nid:$nid]";
+    }
+  }
+
+  return $matches;
+}
+
+/**
+ * @param string $like_placeholder
+ *
+ * @return string[]
+ *
+ * @see _mpac_get_matches_for_aliases()
+ */
+function _me_path_autocomplete_get_matches_for_aliases($like_placeholder) {
+
+  if (!module_exists('path')) {
+    return array();
+  }
+
+  // Get a list of all URL aliases where the destination matches the given
+  // string.
+  $q = db_select('url_alias');
+  $q->fields('url_alias');
+  $q->condition('alias', $like_placeholder, 'LIKE');
+  $q->range(0, 8);
+
+  $matches = array();
+  foreach ($q->execute() as $alias) {
+    // Add alias source and destination to list (and add a special marker to
+    // the item).
+    $lang = $alias->language !== LANGUAGE_NONE ? ($alias->language . ': ') : '';
+    $src = check_plain($alias->source);
+    $dst = check_plain($alias->alias);
+    $matches[$alias->source] = $lang . "$dst | $src";
+  }
+
+  return $matches;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Change path field to autocomplete field.
+ *
+ * @param array $form
+ * @param array $form_state
+ */
+function me_path_autocomplete_form_menu_editor_overview_form_alter(array &$form, array &$form_state) {
+  foreach (element_children($form) as $element_key) {
+    $form[$element_key]['link_path']['#autocomplete_path'] = 'mepac/autocomplete';
+  }
+}

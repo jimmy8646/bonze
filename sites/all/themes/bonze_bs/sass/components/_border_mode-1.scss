@@ -1,0 +1,15 @@
+.border-mode-1 {
+    > * {
+        position: relative;
+        display: block;
+        height: 100%;
+        box-sizing: border-box;
+        border: 2px solid get-bg-color(m1);
+        //border-radius: 20px;
+        padding: 20px 25px;
+        background: #ffffff;
+        margin: 0 5px 5px 0;
+        z-index: 2;
+        @include box-shadow(15px 15px 5px -10px rgba(0,0,0,0.2));
+    }
+}

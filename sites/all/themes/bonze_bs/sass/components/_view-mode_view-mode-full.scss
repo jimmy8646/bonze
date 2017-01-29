@@ -1,0 +1,94 @@
+.view-mode-full {
+  .field-name-field-solution {
+      display: block;
+      margin: 40px 0;
+  }
+
+    .perfile-block {
+        @include child-margin(10px);
+        border-left: 3px solid #C1CDD9;
+        box-sizing: border-box;
+        padding: 0 20px;
+
+        .field-name-ds-user-picture {
+            @include display-flex;
+            @include align-items(center);
+
+            img {
+                position: relative;
+                overflow: hidden;
+                border: 2px solid #98ACC0;
+                border-radius: 50%;
+                max-width: 80px;
+                @include rwd-coding(max-width,80px,80px,80px,60px);
+            }
+        }
+        //wrapper
+        .perfile-info-field {
+            @include child-margin(2px);
+            @include display-flex;
+            @include align-items(center);
+
+            > div > div {
+                @include child-margin(5px,0px);
+            }
+        }
+
+        .field-name-author,
+        .field-name-post-date {
+            @include display-flex;
+            white-space: nowrap;
+            @include rwd-coding(font-size,14px,14px,12px,12px);
+        }
+
+        .field-name-field-tag {
+            display: block;
+
+            .field-items {
+                @include display-flex;
+                @include flex-wrap(wrap);
+
+                .field-item {
+                    position: relative;
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+
+                    &:not(:first-child) {
+                        margin-left: 10px;
+                    }
+
+                    &:after {
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        @include size(100%);
+                        right: -3px;
+                        bottom: -3px;
+                        background: #DCDCDC;
+                        z-index: 1;
+                    }
+
+                    a {
+                        display: block;
+                        position: relative;
+                        z-index: 2;
+                        background: #ffffff;
+                        padding: 5px;
+                        box-sizing: border-box;
+                        border: 1px solid;
+                        white-space: nowrap;
+                        @include transition(0.3s);
+                        font-size: 12px;
+
+                        &:hover {
+                            color: #ffffff;
+                            background: get-bg-color(m1);
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+}

@@ -1,0 +1,18 @@
+.effect_image-scale {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    > * {
+        position: relative;
+        overflow: hidden;
+        display: block;
+    }
+    img {
+        position: relative;
+        overflow: hidden;
+        @include transition(1s);
+        &:hover {
+            @include scale(1.2);
+        }
+    }
+}

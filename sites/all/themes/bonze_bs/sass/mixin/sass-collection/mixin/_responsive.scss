@@ -1,0 +1,118 @@
+$pad: 1520px;
+$small-pad: 768px;
+$phone: 480px;
+$pads: $pad - 1;
+$small-pads: $small-pad - 1;
+//$phones: $phone -1
+/******************************************************************
+                     responsive media queries
+*******************************************************************/
+@mixin rwd-screen-error-log() {
+    &:after {
+        content: "Genius!!__please coding sort for (pc > pad > small-pad > phone);";
+        color: #ffffff;
+        background: #000000;
+        display: block;
+        padding: 20px;
+    }
+}
+@mixin rwd-screen($mobile-large,$mobile-small:null) {
+     @if $mobile-large == pc{
+        @if $mobile-small == null {
+            //only pc
+            @media screen and (min-width:$pad) {
+                 @content;
+            }
+        }
+        @else if $mobile-small == pad {
+            //pc to pad
+            @media screen and (min-width:$small-pad) {
+                 @content;
+            }
+        }
+        @else if $mobile-small == small-pad {
+            //pc to small-pad
+            @media screen and (min-width:$phone) {
+                 @content;
+            }
+        }
+        @else if $mobile-small == phone {
+            //pc to phone
+            @content;
+        }
+        @else {
+            //error
+            @include rwd-screen-error-log();
+        }
+    }
+    @else if $mobile-large == pad {
+         @if $mobile-small == null{
+            //only pad
+            @media screen and (min-width: $small-pad) and (max-width: $pads) {
+                 @content;
+            }
+        }
+        @else if $mobile-small == small-pad {
+            //pad to small-pad
+            @media screen and (min-width: $phone) and (max-width: $pads) {
+                 @content;
+            }
+        }
+        @else if $mobile-small == phone {
+            //pad to phone
+            @media screen and (max-width:$pads) {
+                 @content;
+            }
+        }
+        @else {
+            //error
+            @include rwd-screen-error-log()
+        }
+    }
+    @else if $mobile-large == small-pad {
+         @if $mobile-small == null{
+            //only small-pad
+            @media screen and (min-width: $phone) and (max-width: $small-pads) {
+                 @content;
+            }
+        }
+        @else if $mobile-small == phone {
+            //small-pad to phone
+            @media screen and (max-width:$small-pads) {
+                 @content;
+            }
+        }
+        @else {
+            //error
+            @include rwd-screen-error-log();
+        }
+    }
+    @else if $mobile-large == phone {
+        //only-phone
+        @media screen and (max-width:$phone) {
+             @content;
+        }
+    }
+    @else {
+        //error
+        @include rwd-screen-error-log();
+    }
+}
+
+/******************************************************************
+                     responsive css
+*******************************************************************/
+@mixin rwd-coding($attr,$pc-value,$pad-value,$small-pad-value,$phone-value) {
+     @include rwd-screen(pc){
+        #{$attr}: $pc-value;
+    }
+    @include rwd-screen(pad) {
+        #{$attr}: $pad-value;
+    }
+    @include rwd-screen(small-pad) {
+        #{$attr}: $small-pad-value;
+    }
+    @include rwd-screen(phone) {
+        #{$attr}: $phone-value;
+    }
+}

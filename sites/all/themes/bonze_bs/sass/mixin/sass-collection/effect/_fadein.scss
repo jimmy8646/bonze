@@ -1,0 +1,93 @@
+//fadeIn opacity----------------------------------------------------------------
+@include keyframes(fadeIn) {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 100;
+  }
+}
+
+.fadeIn-0 {
+  opacity: 0;
+}
+
+.fadeIn-100 {
+  @include animation(fadeIn 0.8s);
+  opacity: 100;
+}
+//fadin left--------------------------------------------------------------------
+@include keyframes(fadeInRight) {
+  0% {
+    right: -30%;
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 100;
+    right: 0;
+  }
+}
+
+.fadeIn_right_0 {
+  position: relative;
+  opacity: 0;
+  right: -30%;
+}
+
+.fadeIn_right_100 {
+  @include animation(fadeInRight 1s);
+  opacity: 100;
+  right: 0;
+}
+//fade left---------------------------------------------------------------------
+@include keyframes(fadeInLeft) {
+  0% {
+    left: -30%;
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 100;
+    left: 0;
+  }
+}
+
+.fadeIn_left_0 {
+  position: relative;
+  opacity: 0;
+  left: -30%;
+}
+
+.fadeIn_left_100 {
+  @include animation(fadeInLeft 1s);
+  opacity: 100;
+  left: 0;
+}
+//fadeIn scale------------------------------------------------------------------
+@include keyframes(slidefadin) {
+  0% {
+    opacity: 0;
+    @include scale(0.5);
+  }
+
+  20% {
+    opacity: 0;
+    @include scale(0.8);
+  }
+
+  100% {
+    opacity: 100;
+    @include scale(1);
+  }
+}
+
+.fadin_scale_origin {
+  opacity: 0;
+}
+
+.fadin_scale {
+  @include animation(slidefadin 0.5s);
+  opacity: 100;
+}

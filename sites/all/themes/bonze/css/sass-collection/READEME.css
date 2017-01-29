@@ -1,0 +1,142 @@
+@charset "UTF-8";
+/******************************************************************************************************************
+
+                                                                                                    extend code
+
+******************************************************************************************************************/
+/*************************************
+                              佈局
+**************************************/
+/*************************************
+                             特效區
+**************************************/
+/********************
+                 圖片
+********************/
+/********************
+                 選單
+********************/
+/********************
+                 按鈕
+********************/
+/*************************************
+                             動畫區
+**************************************/
+/******************************************************************************************************************
+
+                                                                                                             mixin code
+                                                                                                             
+******************************************************************************************************************/
+/*************************************
+                              兼容標籤
+**************************************/
+/*************************************
+                              佈局
+**************************************/
+/*************************************
+                              responsive佈局
+**************************************/
+/*@mixin responsive($pc, $pad, $small-pad, $phone) {
+      @media all and (min-width: $media-pc) {
+      
+    }
+    @media all and (min-width: $media-pad) and (max-width: ($media-pc -1)) {
+      
+    }
+   @media all and (min-width:($media-phone +1)) and (max-width: ( $media-pad -1)) {
+      
+    }
+     @media all and (max-width: $media-phone) {
+      
+    }
+}*/
+/*************************************
+                             特效區
+**************************************/
+/********************
+                 圖片
+********************/
+/********************
+                 圖型
+********************/
+/********************
+                 選單
+********************/
+/********************
+                 按鈕
+********************/
+/*************************************
+                             動畫區
+**************************************/
+/*************************************
+                              佈局
+**************************************/
+/**********************************************************
+                                            標籤在圖片上
+**********************************************************/
+/*
+<div class="style-wrapper">
+<div class="image">[field_image]</div>
+<div class="taxonomy">[field_news_taxonomy]</div>
+</div>
+*/
+/**********************************************************
+                                             遮罩圖片
+***********************************************************/
+/*
+<div class="style-wrapper">
+<div class="image">[field_image]</div>
+<div class="content-wrapper">
+<div class="title">[title]</div>
+<div class="create-date">[created]</div>
+</div>
+*/
+/*<div class="style-wrapper">
+<div class="image">[field_discuss_taxonomy_image]</div>
+<div class="content-wrapper">
+<div class="title">[name]</div>
+<div class="slogan">[field_second]</div>
+</div>*/
+/*<div class="style-wrapper">
+<div class="image">[field_discuss_taxonomy_image]</div>
+<div class="content-wrapper">
+<div class="title">[name]</div>
+<div class="slogan">[field_second]</div>
+</div>*/
+/*<div class="style-wrapper">
+<div class="image">[field_discuss_taxonomy_image]</div>
+<div class="content-wrapper">
+<div class="title">[name]</div>
+<div class="slogan">[field_second]</div>
+</div>*/
+/*<div class="style-wrapper">
+<div class="image">[field_discuss_taxonomy_image]</div>
+<div class="content-wrapper">
+<div class="title">[name]</div>
+<div class="slogan">[field_second]</div>
+</div>*/
+/***********************************************************
+                                           圖片至左
+***********************************************************/
+/*<div class="style-wrapper">
+<div class="image">[field_image]</div>
+<div class="content-wrapper">
+<div class="title">[title]</div>
+<div class="create-date">[created]</div>
+<div class="taxonomy">[field_news_taxonomy]</div>
+</div>*/
+/*<div class="style-wrapper">
+<div class="image">[field_image]</div>
+<div class="taxonomy">[field_news_taxonomy]</div>
+<div class="content-wrapper">
+<div class="title">[title]</div>
+<div class="create-date">[created]</div>
+</div>*/
+/*<div class="style-wrapper">
+<div class="image">[field_youtube]</div>
+<div class="content-wrapper">
+<div class ="content">
+<div class="title">[title]</div>
+<div class="create-date">[created]</div>
+</div>
+</div>*/

@@ -1,0 +1,678 @@
+//@import "animate/animate.scss";
+@import "compass/css3";
+
+/******************************************************************************************************************
+
+                                                                                                    extend code
+
+******************************************************************************************************************/
+
+
+/*************************************
+                              佈局
+**************************************/
+
+//清除浮動---------------------------------------------------
+%clearfix {
+    *zoom: 1;
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+//文字持垂直置中--------------------------------------------
+%text-v-center {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+//絕對位置全屏--------------------------------------------------
+%ab-full-screen {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+}
+
+//絕對位置置中----------------------------------------------------
+%ab-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+//絕對位置垂直置中----------------------------------------------------
+%ab-height-center {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translate(0%, -50%);
+    -webkit-transform: translate(0%, -50%);
+    transform: translate(0%, -50%);
+}
+
+//li高度一致(下在ul底下)
+%li-height-same {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    li {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+    }
+}
+
+
+/*************************************
+                             特效區
+**************************************/
+
+
+/********************
+                 圖片
+********************/
+
+//一道光掃過
+%shine {
+    &:after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 0%;
+        height: 95%;
+        background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .4) 200%);
+        background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .4) 200%);
+        -webkit-transform: skewX(-25deg);
+        transform: skewX(-25deg);
+        -webkit-transition: none;
+        -moz-transition: none;
+        -ms-transition: none;
+        -o-transition: none;
+        transition: none;
+    }
+    &:hover:after {
+        width: 100%;
+        left: 150px;
+        background-color: rgba(255, 255, 255, 0);
+        -webkit-transition: all 0.6s ease-out;
+        -moz-transition: all 0.6s ease-out;
+        -ms-transition: all 0.6s ease-out;
+        -o-transition: all 0.6s ease-out;
+        transition: all 0.6s ease-out;
+    }
+}
+
+//霧化
+%tomization {
+    &:after {
+        content: ' ';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: -webkit-radial-gradient(hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0) 20%, hsla(0, 0%, 100%, 1));
+        background-image: radial-gradient(hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0) 20%, hsla(0, 0%, 100%, 1));
+        -webkit-transition: opacity 0.5s;
+        transition: opacity 0.5s;
+        cursor: pointer;
+    }
+    &:hover:after {
+        opacity: 0;
+    }
+}
+
+//霧化 2
+%tomization_2 {
+    &:after {
+        content: ' ';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: -webkit-radial-gradient(hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0) 20%, hsla(0, 0%, 100%, 1));
+        background-image: radial-gradient(hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0) 20%, hsla(0, 0%, 100%, 1));
+        -webkit-transition: all 0.5s;
+        transition: all 0.5s;
+    }
+    &:hover:after {
+        top: 50%;
+        right: 50%;
+        bottom: 50%;
+        left: 50%;
+    }
+}
+
+//霧化 3
+%tomization_3 {
+    &:after {
+        content: ' ';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: -webkit-radial-gradient(hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0) 20%, hsla(0, 0%, 0%, 1));
+        background-image: radial-gradient(hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0) 20%, hsla(0, 0%, 0%, 1));
+        -webkit-transition: opacity 0.5s;
+        transition: opacity 0.5s;
+    }
+    &:hover:after {
+        opacity: 0;
+    }
+}
+
+%radius_line {
+    width: 220px;
+    height: 220px;
+    border: 10px solid #ecab18;
+    border-right-color: #1ad280;
+    border-bottom-color: #1ad280;
+    border-radius: 50%;
+    @include transition(all 0.8s ease-in-out);
+    &:hover .spinner {
+        @include transform(rotate(180deg));
+    }
+}
+
+//圓形縮放
+%round {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #444444;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    img {
+        position: relative;
+        z-index: 100;
+        @include transition(all 0.3s ease 0s);
+    }
+    &:before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: #E42313;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        @include transform(scale(0));
+        @include transition(all 0.3s ease 0s);
+    }
+    &:hover {
+        img {
+            @include transform(scale(0.9));
+        }
+        &:before {
+            @include transform(scale(1));
+        }
+    }
+}
+
+
+/********************
+                 選單
+********************/
+
+%menu_1 {
+    transition: 0.3s ease;
+    background: #3fa46a;
+    color: #ffffff;
+    font-size: 20px;
+    text-decoration: none;
+    border-top: 4px solid #3fa46a;
+    border-bottom: 4px solid #3fa46a;
+    padding: 20px 0;
+    margin: 0 20px;
+    &:hover {
+        border-top: 4px solid #ffffff;
+        border-bottom: 4px solid #ffffff;
+        padding: 6px 0;
+    }
+}
+
+%menu_2 {
+    transition: 0.6s;
+    color: #ffffff;
+    font-size: 20px;
+    text-decoration: none;
+    border-right: 2px dotted transparent;
+    padding: 30px 8px 0 10px;
+    margin: 0 10px;
+    &:hover {
+        border-right: 2px dotted #ffffff;
+        padding-bottom: 24px;
+    }
+}
+
+%menu_3 {
+    transition: 0.4s;
+    color: #ffffff;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 0 10px;
+    margin: 0 10px;
+    &:hover {
+        background-color: #ffffff;
+        color: #EEA200;
+        padding: 24px 10px;
+    }
+}
+
+
+/********************
+                 按鈕
+********************/
+
+%btn_1 {
+    border: 0 solid;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+    outline: 1px solid;
+    outline-color: rgba(255, 255, 255, 0.5);
+    outline-offset: 0px;
+    text-shadow: none;
+    -webkit-transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+    &:hover {
+        border: 1px solid;
+        box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+        outline-color: rgba(255, 255, 255, 0);
+        outline-offset: 15px;
+        text-shadow: 1px 1px 2px #427388;
+    }
+}
+
+%btn_2 {
+    z-index: 20;
+    &:after {
+        background: #fff;
+        content: "";
+        height: 155px;
+        left: -75px;
+        opacity: .2;
+        position: absolute;
+        top: -50px;
+        -webkit-transform: rotate(35deg);
+        -ms-transform: rotate(35deg);
+        transform: rotate(35deg);
+        -webkit-transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+        transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+        width: 50px;
+        z-index: -10;
+    }
+    &:hover:after {
+        left: 120%;
+        -webkit-transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+        transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+    }
+}
+
+%btn3 {
+    background: #e3403a;
+    border: 1px solid #da251f;
+    box-shadow: 0px 2px 0 #d6251f, 2px 4px 6px #e02a24;
+    font-weight: 900;
+    letter-spacing: 1px;
+    -webkit-transition: all 150ms linear;
+    transition: all 150ms linear;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 45px;
+    margin: 0 auto 2em;
+    max-width: 160px;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    vertical-align: middle;
+    width: 100%;
+    background: #000;
+    font-weight: 100;
+    &:hover {
+        background: #e02c26;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
+        color: #ec817d;
+        text-decoration: none;
+        text-shadow: -1px -1px 0 #c2211c;
+        -webkit-transition: all 250ms linear;
+        transition: all 250ms linear;
+    }
+}
+
+//圈圈按鈕
+%more_link {
+    a {
+        color: #000;
+        &:after {
+            color: #000;
+            content: ">";
+            border: 1px solid #000;
+            @include border-radius(50%);
+            padding: 8px;
+            margin-left: 10px;
+            @include transition(all 1s);
+            position: relative;
+            left: 0px;
+        }
+        &:hover:after {
+            left: 5px;
+        }
+    }
+}
+
+
+/*************************************
+                             動畫區
+**************************************/
+
+
+/******************************************************************************************************************
+
+                                                                                                             mixin code
+                                                                                                             
+******************************************************************************************************************/
+
+
+/*************************************
+                              兼容標籤
+**************************************/
+
+//座標定位
+//example:@include transform-xy(x軸,y軸)
+@mixin transform-xy($trans-width, $trans-height) {
+    -ms-transform: translate($trans-width, $trans-height);
+    -webkit-transform: translate($trans-width, $trans-height);
+    transform: translate($trans-width, $trans-height);
+}
+
+
+/*************************************
+                              佈局
+**************************************/
+
+//區塊排列數,行距
+//example: @include grid(列數,間距)    *間距請下％數
+@mixin grid($numPerRow, $margin) {
+    width: ((100% - (($numPerRow - 1) * $margin)) / $numPerRow);
+    &:nth-child(n) {
+        margin-bottom: $margin;
+        margin-right: $margin;
+        float: left;
+    }
+    &:nth-child(#{$numPerRow}n) {
+        margin-right: 0;
+    }
+}
+
+//區塊顏色擴出page
+@mixin fucking-out($color) {
+    &:after {
+        @media all and (min-width: 1025px) {
+            content: "";
+            display: block;
+            background: $color;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            margin-left: -10000px;
+            padding: 0px 10000px;
+            z-index: -10;
+        }
+    }
+}
+
+// 絕對位置置中
+//example:@include ab-center(區塊寬度,區塊高度)
+@mixin ab-center($width: null, $height: null) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @if not $width and not $height {
+        transform: translate(-50%, -50%);
+    }
+    @else if $width and $height {
+        width: $width;
+        height: $height;
+        margin: -($width / 2) #{0 0} -($height / 2);
+    }
+    @else if not $height {
+        width: $width;
+        margin-left: -($width / 2);
+        transform: translateY(-50%);
+    }
+    @else {
+        height: $height;
+        margin-top: -($height / 2);
+        transform: translateX(-50%);
+    }
+}
+
+// 截取文本text-overflow
+@mixin text-overflow($substract:0) {
+    //`$substract`单位为%
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100% - $substract;
+}
+
+
+/*************************************
+                              responsive佈局
+**************************************/
+
+$media-pc:960px;
+$media-pad:768px;
+$media-phone:480px;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*@mixin responsive($pc, $pad, $small-pad, $phone) {
+      @media all and (min-width: $media-pc) {
+      
+    }
+    @media all and (min-width: $media-pad) and (max-width: ($media-pc -1)) {
+      
+    }
+   @media all and (min-width:($media-phone +1)) and (max-width: ( $media-pad -1)) {
+      
+    }
+     @media all and (max-width: $media-phone) {
+      
+    }
+}*/
+
+
+
+
+
+
+//reponsive font size
+@mixin responsive-text-size($pc, $pad, $small-pad, $phone) {
+      @media all and (min-width: $media-pc) {
+        font-size: $pc;
+    }
+    @media all and (min-width: $media-pad) and (max-width: ($media-pc -1)) {
+        font-size: $pad;
+    }
+   @media all and (min-width:($media-phone +1)) and (max-width: ( $media-pad -1)) {
+        font-size: $small-pad;
+    }
+     @media all and (max-width: $media-phone) {
+        font-size: $phone;
+    }
+}
+
+//responsive block display
+@mixin responsive-display($pc, $pad, $small-pad, $phone) {
+    @media all and (min-width: $media-pc) {
+        display: $pc;
+    }
+    @media all and (min-width: $media-pad) and (max-width: ($media-pc -1)) {
+        fdisplay: $pad;
+    }
+    @media all and (min-width:($media-phone +1)) and (max-width: ( $media-pad -1)) {
+        display: $small-pad;
+    }
+    @media all and (max-width: $media-phone) {
+        display: $phone;
+    }
+}
+
+//responsive padding
+@mixin responsive-padding ($pc, $pad, $small-pad, $phone) {
+      @media all and (min-width: $media-pc) {
+        padding:0px $pc;
+    }
+    @media all and (min-width: $media-pad) and (max-width: ($media-pc -1)) {
+        padding:0px $pad;
+    }
+   @media all and (min-width:($media-phone +1)) and (max-width: ( $media-pad -1)) {
+       padding:0px $small-pad;
+    }
+     @media all and (max-width: $media-phone) {
+         padding:0px $phone;
+      
+    }
+}
+
+
+/*************************************
+                             特效區
+**************************************/
+
+
+/********************
+                 圖片
+********************/
+
+// 放大旋轉
+//example:@include zoom-large(圖片放大的倍率)
+@mixin zoom-large($trans-size) {
+    overflow: hidden;
+    img {
+        @include transition(all 0.6s ease-in-out);
+        @include display-flex;
+    }
+    img:hover {
+        @include transform(scale($trans-size) rotate(5deg));
+    }
+}
+
+
+/********************
+                 圖型
+********************/
+
+// 三角形
+//example:@include triangle(寬度,三角形方向,顏色)
+@mixin triangle($width, $dir, $color) {
+    @if $dir==up {
+        width: 0px;
+        height: 0px;
+        border-left: $width/2 solid transparent;
+        border-right: $width/2 solid transparent;
+        border-bottom: $width/2 solid $color;
+    }
+    @else if $dir==down {
+        width: 0px;
+        height: 0px;
+        border-left: $width/2 solid transparent;
+        border-right: $width/2 solid transparent;
+        border-top: $width/2 solid $color;
+    }
+    @else if $dir==right {
+        width: 0px;
+        height: 0px;
+        border-top: $width/2 solid transparent;
+        border-bottom: $width/2 solid transparent;
+        border-left: $width/2 solid $color;
+    }
+    @else if $dir==left {
+        width: 0px;
+        height: 0px;
+        border-top: $width/2 solid transparent;
+        border-bottom: $width/2 solid transparent;
+        border-right: $width/2 solid $color;
+    }
+}
+
+
+/********************
+                 選單
+********************/
+
+
+/********************
+                 按鈕
+********************/
+
+@mixin bottom-style($bg-color, $font-color, $h-bg-color, $h-font-color) {
+    @include transition(all 0.5s);
+    background: $bg-color;
+    border: 1px solid $font-color;
+    color: $font-color;
+    border-radius: 100px;
+    padding: 10px 20px;
+    &:hover {
+        @include transition(all 0.5s);
+        color: $h-font-color;
+        background: $h-bg-color;
+        border: 1px solid $h-font-color;
+    }
+}
+
+
+/*************************************
+                             動畫區
+**************************************/
+
+//keyframes
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+    @-o-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+@import "_drupal-block-style.scss";

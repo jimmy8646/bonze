@@ -1,0 +1,32 @@
+.tagclouds-block_tagclouds-1 {
+    h2.block__title {
+        display: block;
+        box-sizing: border-box;
+        @include rwd-screen(pc,small-pad) {
+            padding: 5px 40px;
+        }
+        @include rwd-screen(phone) {
+            padding: 5px 20px;
+            font-size: 20px;
+        }
+    }
+
+    span {
+        display: block;
+
+        a.tagclouds {
+
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            @include rwd-screen(pc,small-pad) {
+                padding: 10px 80px;
+                font-size: 1.2em;
+            }
+            @include rwd-screen(phone) {
+                padding: 10px 40px;
+                font-size: 1em;
+            }
+        }
+    }
+}

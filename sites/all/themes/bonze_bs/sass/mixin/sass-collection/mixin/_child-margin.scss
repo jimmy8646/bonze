@@ -1,0 +1,12 @@
+@mixin child-margin($margin-row,$margin-col:$margin-row){
+  position: relative;
+  overflow: hidden;
+  clear: both;
+  > * {
+      margin: (-$margin-col) (-$margin-row);
+      > * {
+          padding: $margin-col $margin-row;
+          box-sizing: border-box;
+      }
+  }
+}

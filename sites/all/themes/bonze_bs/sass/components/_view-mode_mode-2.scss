@@ -1,0 +1,37 @@
+.view-mode-vm_2 {
+    position: relative;
+    @include rwd-screen(pc) {
+         @include child-margin(20px,10px);
+    }
+    @include rwd-screen(pad,phone) {
+         @include child-margin(20px,10px);
+    }
+    //perfile info
+    .field-perfile {
+        .perfile-wrapper {}
+    }
+    //artcle info
+    .content-wrapper {
+        position: relative;
+        @include child-margin(0px,10px);
+        //@extend .border_mode-1;
+    }
+
+    .field-name-ds-user-picture {
+        border: 2px solid #98ACC0;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+        max-width: 50px;
+    }
+
+    .field-name-author {
+        text-align: center;
+        padding: 10px;
+        @include rwd-coding(display,none,none,none,none);
+    }
+
+    .field-name-field-tag {
+        @extend .field-tag_mode-1;
+    }
+}

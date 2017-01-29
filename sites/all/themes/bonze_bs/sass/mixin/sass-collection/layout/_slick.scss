@@ -1,0 +1,22 @@
+.default-slick {
+  .slick__slider {
+    margin: 0;
+  }
+
+  .slick__arrow {
+    position: static;
+    @include size(auto);
+    left: auto;
+    top: auto;
+    margin: 0;
+
+    .slick-arrow {
+      position: static;
+      @include size(auto);
+      left: auto;
+      top: auto;
+      margin: 0;
+      @include transform-xy(0px,0px);
+    }
+  }
+}

@@ -1,0 +1,42 @@
+.image-block_logo-block {
+    @include display-flex;
+    @include justify-content(center);
+    @include align-items(center);
+    position: relative;
+    //border: 1px solid #efeaea;
+    letter-spacing: 10px;
+    color: #ffffff;
+
+    > * {
+        display: block;
+        padding: 15px;
+    }
+
+    .block-image {
+        @include rwd-coding(display,block,block,none,none);
+    }
+
+    .block-body {
+        white-space: nowrap;
+
+        p,
+        p * {
+            @include rwd-screen(small-pad) {
+                font-size: 18px!important;
+            };
+            @include rwd-screen(phone) {
+                font-size: 12px!important;
+            };
+        }
+
+        p:first-child,
+        p:first-child * {
+            @include rwd-screen(small-pad) {
+                font-size: 35px!important;
+            };
+            @include rwd-screen(phone) {
+                font-size: 25px!important;
+            };
+        }
+    }
+}

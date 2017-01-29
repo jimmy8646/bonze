@@ -1,0 +1,449 @@
+//@import "animate/animate.scss";
+@import "compass/css3";
+$main-color1:#7AC8CC;
+$main-color2:#7AC8CC;
+$font-color1:#ffffff;
+
+/*************************************
+                              佈局
+**************************************/
+
+
+/**********************************************************
+                                            標籤在圖片上
+**********************************************************/
+
+%style1-tag1 {
+    .style-wrapper {
+        position: relative;
+        .taxonomy {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            text-align: center;
+            width: 150px;
+            height: auto;
+            background: $main-color1;
+            color: $font-color1;
+            margin: 20px 0px 0px 20px;
+            padding: 10px 0px;
+        }
+    }
+}
+
+
+/*
+<div class="style-wrapper">
+<div class="image">[field_image]</div>
+<div class="taxonomy">[field_news_taxonomy]</div>
+</div>
+*/
+
+
+/**********************************************************
+                                             遮罩圖片
+***********************************************************/
+
+//圖片上,靠下一條bar
+%style-mask1 {
+    .style-wrapper {
+        position: relative;
+        @extend %clearfix;
+        .image {
+            img {
+                float: left;
+            }
+        }
+        .content-wrapper {
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            width: 100%;
+            height: auto;
+            background: rgba(0, 0, 0, 0.6);
+            box-sizing: border-box;
+            padding: 20px;
+            * {
+                color: $font-color1;
+            }
+        }
+    }
+}
+
+
+/*
+<div class="style-wrapper">
+<div class="image">[field_image]</div>
+<div class="content-wrapper">
+<div class="title">[title]</div>
+<div class="create-date">[created]</div>
+</div>
+*/
+
+//圖片全屛遮罩,字在遮罩內-左下
+%style-mask2 {
+    .style-wrapper {
+        position: relative;
+        @extend %clearfix;
+        * {
+            color: $font-color1;
+        }
+        .image {
+            img {
+                float: left;
+            }
+            &:after {
+                content: "";
+                display: block;
+                @extend %ab-full-screen;
+                @include transition(all 0.5s);
+                background: rgba(0, 0, 0, 0.2);
+            }
+        }
+        .content-wrapper {
+            position: absolute;
+            bottom: 0px;
+            padding: 20px;
+        }
+    }
+    &:hover {
+        .style-wrapper {
+            .image {
+                &:after {
+                    @include transition(all 0.5s);
+                    background: rgba(0, 0, 0, 0);
+                }
+            }
+        }
+    }
+}
+
+
+/*<div class="style-wrapper">
+<div class="image">[field_discuss_taxonomy_image]</div>
+<div class="content-wrapper">
+<div class="title">[name]</div>
+<div class="slogan">[field_second]</div>
+</div>*/
+
+//圖片全屛遮罩,字在遮罩內左下
+%style-mask2-a-bottom-left {
+    .style-wrapper {
+        position: relative;
+        @extend %clearfix;
+        * {
+            color: $font-color1;
+            font-size: 25px;
+        }
+        .image {
+            img {
+                float: left;
+            }
+            a {
+                &:after {
+                    @include transition(all 0.5s);
+                    @extend %ab-full-screen;
+                    background: rgba(0, 0, 0, 0.2);
+                    content: "";
+                    display: block;
+                }
+            }
+        }
+        .content-wrapper {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            padding: 20px;
+        }
+    }
+    &:hover {
+        .style-wrapper {
+            .image {
+                a {
+                    &:after {
+                        @include transition(all 0.5s);
+                        background: rgba(0, 0, 0, 0);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*<div class="style-wrapper">
+<div class="image">[field_discuss_taxonomy_image]</div>
+<div class="content-wrapper">
+<div class="title">[name]</div>
+<div class="slogan">[field_second]</div>
+</div>*/
+
+//圖片全屛遮罩,字在遮罩內左上
+%style-mask2-a-top-left {
+    .style-wrapper {
+        position: relative;
+        @extend %clearfix;
+        * {
+            color: $font-color1;
+            font-size: 25px;
+        }
+        .image {
+            img {
+                float: left;
+            }
+            a {
+                &:after {
+                    @include transition(all 0.5s);
+                    @extend %ab-full-screen;
+                    background: rgba(0, 0, 0, 0.2);
+                    content: "";
+                    display: block;
+                }
+            }
+        }
+        .content-wrapper {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            padding: 40px;
+        }
+    }
+    &:hover {
+        .style-wrapper {
+            .image {
+                a {
+                    &:after {
+                        @include transition(all 0.5s);
+                        background: rgba(0, 0, 0, 0);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*<div class="style-wrapper">
+<div class="image">[field_discuss_taxonomy_image]</div>
+<div class="content-wrapper">
+<div class="title">[name]</div>
+<div class="slogan">[field_second]</div>
+</div>*/
+
+//圖片全屛遮罩,字在遮罩內右下,加個箭頭
+%style-mask3-a {
+    .style-wrapper {
+        position: relative;
+        @extend %clearfix;
+        * {
+            color: $font-color1;
+            font-size: 25px;
+        }
+        .image {
+            img {
+                float: left;
+            }
+            a {
+                &:after {
+                    @include transition(all 0.5s);
+                    @extend %ab-full-screen;
+                    background: rgba(0, 0, 0, 0.1);
+                    content: "";
+                    display: block;
+                }
+            }
+        }
+        .content-wrapper {
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            padding: 0px 20px;
+            &:after {
+                content: "";
+                display: block;
+                @include triangle(35px, up, #ffffff);
+                margin-left: 35px;
+            }
+        }
+    }
+    &:hover {
+        .style-wrapper {
+            .image {
+                a {
+                    &:after {
+                        @include transition(all 0.5s);
+                        background: rgba(0, 0, 0, 0);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*<div class="style-wrapper">
+<div class="image">[field_discuss_taxonomy_image]</div>
+<div class="content-wrapper">
+<div class="title">[name]</div>
+<div class="slogan">[field_second]</div>
+</div>*/
+
+
+/***********************************************************
+                                           圖片至左
+***********************************************************/
+
+//圖片至左
+@mixin style-float-img($img-width,$content-width,$padding) {
+    .style-wrapper {
+        position: relative;
+        @extend %clearfix;
+        .image {
+            float: left;
+            width: $img-width;
+        }
+        .content-wrapper {
+            float: left;
+            width: $content-width;
+            box-sizing: border-box;
+            padding:0px $padding;
+        }
+    }
+}
+
+
+/*<div class="style-wrapper">
+<div class="image">[field_image]</div>
+<div class="content-wrapper">
+<div class="title">[title]</div>
+<div class="create-date">[created]</div>
+<div class="taxonomy">[field_news_taxonomy]</div>
+</div>*/
+
+//圖片至左，內文置右,分類在右下(border-top)
+%style-float-img2 {
+    .style-wrapper {
+        position: relative;
+        @extend %clearfix;
+        .image {
+            float: left;
+            width: 50%;
+            img {
+                float: left;
+            }
+        }
+        .taxonomy {
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            width: 50%;
+            box-sizing: border-box;
+            padding: 15px 5%;
+            &:before {
+                content: "";
+                display: block;
+                width: 80%;
+                height: 2px;
+                background: $main-color1;
+                position: absolute;
+                top: 0px;
+            }
+        }
+        .content-wrapper {
+            position: relative;
+            float: left;
+            width: 50%;
+            height: 100%;
+            box-sizing: border-box;
+            padding: 0px 5%;
+        }
+    }
+}
+
+
+/*<div class="style-wrapper">
+<div class="image">[field_image]</div>
+<div class="taxonomy">[field_news_taxonomy]</div>
+<div class="content-wrapper">
+<div class="title">[title]</div>
+<div class="create-date">[created]</div>
+</div>*/
+
+//圖片至左(上方有播放遮罩)，內容置右(且垂直至中)
+%style-float-img3 {
+    @include transition(all 0.5s);
+    .style-wrapper {
+        position: relative;
+        @extend %clearfix;
+        .image {
+            position: relative;
+            float: left;
+            width: 20%;
+            &:after {
+                content: "";
+                display: block;
+                @include triangle(20px, right, #ffffff);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                @include transform-xy (-50%, -50%);
+            }
+            a {
+                &:after {
+                    @include transition(all 0.5s);
+                    @extend %ab-full-screen;
+                    background: rgba(0, 0, 0, 0.6);
+                    content: "";
+                    display: block;
+                }
+                &:before {
+                    content: "";
+                    display: block;
+                    width: 40px;
+                    height: 40px;
+                    border: 2px solid #ffffff;
+                    border-radius: 100px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    @include transform-xy (-50%, -50%);
+                    z-index: 10;
+                }
+            }
+            img {
+                float: left;
+            }
+        }
+        .content-wrapper {
+            position: absolute;
+            //width: 80%;
+            left: 20%;
+            height: 100%;
+            box-sizing: border-box;
+            padding: 0px 5%;
+            @extend %text-v-center;
+        }
+    }
+    &:hover {
+        .style-wrapper {
+            .image {
+                a {
+                    &:after {
+                        @include transition(all 0.5s);
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*<div class="style-wrapper">
+<div class="image">[field_youtube]</div>
+<div class="content-wrapper">
+<div class ="content">
+<div class="title">[title]</div>
+<div class="create-date">[created]</div>
+</div>
+</div>*/

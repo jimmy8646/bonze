@@ -1,0 +1,507 @@
+/**
+ * @file
+ * Styles are organized using the SMACSS technique. @see http://smacss.com/book/
+ *
+ * When you turn on CSS aggregation at admin/config/development/performance, all
+ * of these @include files will be combined into a single file.
+ */
+
+
+/* Import Sass mixins, variables, Compass modules, etc. */
+
+@import "init";
+
+/* HTML element (SMACSS base) rules */
+
+@import "normalize";
+
+/* Layout rules */
+
+@import "sass_mixin/_sass-code.scss";
+@import "layouts/responsive";
+
+/* Component (SMACSS module) rules */
+
+@import "components/misc";
+// Optionally, add your own components here.
+@import "print";
+
+/* SMACSS theme rules */
+
+
+/* @import "theme-A"; */
+
+
+/* @import "theme-B"; */
+
+$header_footer_color:#33bcf2;
+$link_bgcolor:#3b5998;
+$link_color:#ffffff;
+$font_family: "微軟正黑體",
+Arial,
+sans-serif!important;
+// 動畫庫
+@include keyframes(sun_go) {
+    0% {
+        @include rotate(0deg);
+    }
+    100% {
+        @include rotate(360deg);
+    }
+}
+
+@include keyframes(sun_go_1) {
+    0% {
+        @include rotate(-10deg);
+    }
+    100% {
+        @include rotate(10deg);
+    }
+}
+
+@include keyframes(weather_go) {
+    0% {
+        left: 0px;
+    }
+    100% {
+        left: 10px;
+    }
+}
+
+@include keyframes(load) {
+    0% {
+        @include scale(1);
+    }
+    100% {
+        @include scale(1.5);
+    }
+}
+
+//for all code--------------------------------------------------------------
+body {
+    width: 100%;
+    height: 100%;
+    font-family: $font_family;
+    background-color: #E9E9E9;
+}
+
+ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    height: auto!important;
+}
+
+h1#page-title {
+    font-size: 30px;
+    color: $link_bgcolor;
+}
+
+h2.block__title {
+    color: $link_color;
+}
+
+.block {
+    margin: 0px;
+}
+
+#navigation {
+    display: none;
+}
+
+.breadcrumb {
+    padding: 10px 20px;
+    &:before {
+        content: "";
+        display: inline-block;
+        background: url(../images/chef-16.png);
+        width: 50px;
+        height: 50px;
+        @include background-size(cover);
+    }
+    a {
+        color: $link_bgcolor;
+    }
+}
+
+h1#page-title {
+    display: none;
+}
+
+// #loading {
+//     position: fixed;
+//     left: 0;
+//     top: 0;
+//     width: 100%;
+//     height: 100%;
+//     z-index: 99999;
+//     background-color: #fff;
+//     background: url('/sites/default/files/logo.png') 50% 50% no-repeat #f9f9f9;
+//     @include animation(load .5s infinite alternate)
+// }
+// header
+.header__region {
+    clear: none;
+}
+
+#header {
+    padding: 5px 30px;
+    box-shadow: 0 4px 4px #aaa;
+    a {
+        color: $link_color;
+    }
+    z-index: 666;
+    background:url(../images/header_pattern.png);
+    .logo_wrap {
+        @include make-xs-column(4);
+    }
+    // padding: 0px;
+    #logo {
+        img {
+            width: 150px;
+        }
+    }
+    #site-name {
+        @include opacity(0);
+        margin-right: -155px;
+        @include transition(all 0.5s);
+    }
+    .region-header {
+        @include make-xs-column(8);
+        text-align: right;
+        margin-top: 30px;
+    }
+}
+
+#block-menu-menu-header {
+    margin-top: 20px;
+    li.menu__item {
+        list-style: none;
+        display: inline-block;
+        margin-right: 10px;
+        margin-top: 10px;
+        a {
+            position: relative;
+            padding: 15px 20px;
+            @include transition(all 0.5s);
+            text-decoration: none;
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.5);
+            }
+        }
+        .active {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+    }
+}
+
+.logo_hover {
+    opacity: 1!important;
+    margin-right: 0px!important;
+}
+
+.node-10 {
+    display: none;
+}
+
+%icon_margin {
+    margin-left: 5px;
+    display: inline-block;
+}
+
+#main {
+    padding: 0px;
+    // content
+    #content {
+        padding: 10px 20px;
+        .content-wrapper {
+            .item-list {
+                ul {
+                    padding: 0px;
+                    margin: 0px;
+                    .views-row {
+                        @include transition(all 0.2s);
+                        margin-bottom: 20px;
+                        list-style: none;
+                        position: relative;
+                        @include border-radius(2px);
+                        @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.07));
+                        background-color: rgba(255, 255, 255, 0.9);
+                        padding: 20px;
+                        .views-field-title {
+                            font-size: 28px;
+                            // margin-bottom: 20px;
+                            line-height: 34px;
+                            a {
+                                text-decoration: none;
+                                color: #000000;
+                                padding-bottom: 10px;
+                                display: inline-block;
+                                &:hover {
+                                    color: $link_bgcolor;
+                                }
+                            }
+                        }
+                        .tags_wrap {
+                            a,
+                            span,
+                            i {
+                                color: #b1b1b1;
+                                @include transition(all 0.2s);
+                            }
+                            a {
+                                &:hover {
+                                    color: #000000;
+                                }
+                            }
+                            i {
+                                margin-right: 2px;
+                            }
+                            margin:10px 0px;
+                            .views-field-created {
+                                display: inline-block;
+                                margin-right: 10px;
+                            }
+                            .views-field-name {
+                                margin-right: 10px;
+                                display: inline-block;
+                            }
+                            .views-field-field-tag {
+                                margin-right: 10px;
+                                display: inline-block;
+                                .field-content {
+                                    display: inline-block;
+                                }
+                            }
+                        }
+                        .article_wrap {
+                            @extend %clearfix;
+                            .views-field-field-main-image {
+                                @include make-sm-column(2);
+                                // @include gutter();
+                                img {
+                                    width: 100%;
+                                }
+                            }
+                            .article_bady_wrap {
+                                @include make-sm-column(10);
+                                @include gutter();
+                                .views-field-body {
+                                    margin: 10px 0px;
+                                }
+                            }
+                        }
+                        &:before {
+                            content: '';
+                            position: absolute;
+                            height: 8px;
+                            bottom: -8px;
+                            left: 0;
+                            background: url(../images/middle-shadow.png) no-repeat top center;
+                            width: 100%;
+                        }
+                        .views-field-nid {
+                            @extend %clearfix;
+                            text-align: right;
+                            // margin-top: 20px;
+                            a {
+                                background-color: $link_bgcolor;
+                                color: $link_color;
+                                padding: 10px;
+                                border-radius: 10px;
+                                @include transition(all 0.5s);
+                                &:hover {
+                                    background-color: #000000;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .tag-wrap {
+                a,
+                span,
+                i,
+                .field-item {
+                    color: #b1b1b1;
+                    @include transition(all 0.2s);
+                }
+                a {
+                    &:hover {
+                        color: #000000;
+                    }
+                }
+                .field-items {
+                    @extend %icon_margin;
+                    .field-item {
+                        @extend %icon_margin;
+                    }
+                }
+                .field-name-post-date {
+                    @extend %icon_margin;
+                }
+                .field-name-author {
+                    @extend %icon_margin;
+                }
+                .field-name-field-tag {
+                    @extend %icon_margin;
+                }
+            }
+            .node {
+                background-color: $link_color;
+                padding: 20px;
+                h1 {
+                    margin: 0px;
+                }
+            }
+        }
+    }
+    .sidebars {
+        padding: 10px 20px;
+        box-sizing: border-box;
+        .sidebar {
+            // padding: 10px;
+            box-sizing: border-box;
+            @include border-radius(2px);
+            @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.07));
+            background-color: rgba(255, 255, 255, 0.9);
+            #block-tagclouds-1 {
+                width: 100%;
+                padding: 10px;
+                .tagclouds-term {
+                    display: inline-block;
+                    a {
+                        margin-top: 10px;
+                        display: inline-block;
+                        padding: 10px;
+                        background-color: $link_bgcolor;
+                        color: $link_color;
+                        text-decoration: none;
+                        @include transition(all 0.5s);
+                        border-radius: 10px;
+                        &:hover {
+                            background-color: #000000;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#block-views-bonze-all-node-block-1 {
+    .block__title {
+        display: none;
+    }
+}
+
+.pager {
+    li {
+        padding:0px;
+        a {
+            padding: 10px;
+            color: #ffffff;
+            background-color: #003063;
+            &:hover {
+                background-color: #ffffff;
+                color: #003063;
+            }
+        }
+    }
+    .pager-current {
+        
+            padding: 10px;
+      
+        background-color: #ffffff;
+        color: #003063;
+    }
+}
+
+#footer {
+    background: url(../images/header_pattern.png);
+    box-shadow: 0 -5px 4px #aaa;
+    #block-block-1 {
+        // background-color: $header_footer_color;
+        padding: 5px;
+        color: $link_color;
+    }
+}
+
+// .mean-container {
+//     .mean-bar,
+//     .mean-nav {
+//         background-color: $header_footer_color;
+//     }
+// }
+// @include keyframes(light_bar) {
+//     0% {
+//         @include rotate(0deg);
+//     }
+//     // 50% {
+//     //  @include scale(1.2);
+//     // }
+//     100% {
+//         @include rotate(45deg);
+//     }
+// }
+// .merry_btn {
+//     position: fixed;
+//     height: 70px;
+//     width: 50px;
+//     background-color: $header_footer_color;
+//     right: 20px;
+//     bottom: 20px;
+//     cursor: pointer;
+//     // padding:10px;
+//     z-index: 8888;
+//     background: url('/sites/default/files/lightbar.png');
+//     @include background-size (contain);
+//     background-repeat: no-repeat;
+//     // @include rotate(-45deg);
+//     @include animation(light_bar .5s infinite alternate);
+//     .barContro_space {
+//         @include rotate(-135deg);
+//         margin: -45px -45px;
+//         position: relative;
+//         top: 11px;
+//         right: 56px;
+//         border-radius: 5px;
+//         // @include transition(all 1s);
+//     }
+//     .windu {
+//         border-radius: 2px;
+//         display: block;
+//         width: 0%;
+//         box-shadow: 0px 0px 10px 1px #3B8CF8, 0 0 1px #3B8CF8, 0 0 1px #3B8CF8, 0 0 1px #3B8CF8, 0 0 1px #3B8CF8, 0 0 1px #3B8CF8, 0 0 1px #3B8CF8;
+//         background-color: #fff;
+//         @include transition(all 0.5s);
+//     }
+//     // background-position-x: 0px;
+//     &:hover .windu {
+//         width: 100%;
+//         height: 6px;
+//         // @include transition(all 1s);
+//     }
+// }
+// .merry {
+//     position: fixed;
+//     left: 0;
+//     top: 0;
+//     width: 100%;
+//     height: 100%;
+//     z-index: -1;
+//     overflow: scroll;
+//     opacity: 0;
+//     @include transition(all 0.2s);
+// }
+// .merry_click {
+//     z-index: 9999;
+//     overflow: scroll;
+//     opacity: 1;
+// }

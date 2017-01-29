@@ -1,0 +1,64 @@
+/*************************************
+                    gird     layout
+**************************************/
+/*
+$layout =  float / inline-block  (設定此grid是使用  float:left 還是 display:inline-block 的排列方式)
+$mb = true /false (選擇最後一列的grid是否有margin-bottom的樣式)
+$numberrow = 數字(整數)  (設定每一列gird的格數)
+$margin = 數字百分比 1% 2%....等等  (設定gird上下左右的margin)
+$margin-bottom =(這就不特別說了)有些特定的情況,必須要自己去設定margin-bottom的值,如不需要可直接省略
+*/
+@mixin grid($layout, $mb, $numberrow, $margin, $margin-bottom:null) {
+    width: ((100%-(($numberrow - 1)*$margin))/$numberrow);
+    margin-right: $margin;
+    &:nth-child(#{$numberrow}n) {
+        margin-right: 0;
+    }
+    @if $layout==float {
+        float: left;
+    }
+    @else {
+        display: inline-block;
+        vertical-align: top;
+    }
+    @if $mb==true {
+        margin-bottom: ($margin*1);
+        margin-bottom: $margin-bottom;
+    }
+    @else if $mb==false {
+        &:nth-last-child(n+#{$numberrow+1}) {
+            margin-bottom: ($margin*1);
+            margin-bottom: $margin-bottom;
+        }
+    }
+}
+//於子項目的母元素使用
+//include flex-grid(dom元素,格數,間距);
+//flex-grid 排版
+@mixin flex-grid($object,$row,$margin,$margin-bottom:$margin) {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-left: $margin * -1;
+    margin-right: $margin * -1;
+    margin-top: $margin-bottom * -1;
+    margin-bottom: $margin-bottom * -1;
+    position: relative;
+    overflow: hidden;
+    > #{$object} {
+        $width: 100%/$row;
+        width: $width;
+        box-sizing: border-box;
+        padding-left: $margin;
+        padding-right: $margin;
+        padding-top: $margin-bottom;
+        padding-bottom: $margin-bottom;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        @include flex-direction(column);
+        //@include flex-wrap(wrap);
+    }
+}

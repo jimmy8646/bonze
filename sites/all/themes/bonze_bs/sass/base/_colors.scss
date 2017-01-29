@@ -1,0 +1,56 @@
+$main1:#98ACC0;
+$main2:#ffffff;
+
+//backgrond color
+$bg-color: ( m1:$main1,m2:$main2,b1:#000000,b2:#ffffff,c1:#DEDEDE,c2:#656469);
+
+//border color
+$br-color: ( m1:$main1,m2:$main2,b1:#000000,b2:#ffffff,c1:#DEDEDE);
+
+//font color
+$font-color: ( m1:$main1,m2:$main2,b1:#000000,b2:#ffffff,c1:#ea4d35,c2:#9EA1A2);
+
+
+@function get-bg-color($colour) {
+     @if map-has-key($bg-color, $colour){
+        $colour: map-get($bg-color, $colour);
+    }
+    @else {
+         @if type-of($colour) != colour{
+            @error "Colour name: `#{$colour}` not found.";
+        }
+    }
+    @return $colour;
+}
+
+@function get-br-color($colour) {
+     @if map-has-key($br-color, $colour){
+        $colour: map-get($br-color, $colour);
+    }
+    @else {
+         @if type-of($colour) != colour{
+            @error "Colour name: `#{$colour}` not found.";
+        }
+    }
+    @return $colour;
+}
+
+@function get-font-color($colour) {
+     @if map-has-key($font-color, $colour){
+        $colour: map-get($font-color, $colour);
+    }
+    @else {
+         @if type-of($colour) != colour{
+            @error "Colour name: `#{$colour}` not found.";
+        }
+    }
+    @return $colour;
+}
+
+
+
+
+//example:
+// body{
+//   background:get-bg-color(c1);
+// }

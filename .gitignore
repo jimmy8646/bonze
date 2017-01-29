@@ -12,3 +12,4 @@ logs/*
 *.dd
 sites/all/modules/contrib/devel
 sites/all/modules/contrib/browsersync
+*.sql.old

@@ -3,9 +3,16 @@
 }
 
 
+//vm_2 list
 .child-margin-1 {
-    @include rwd-screen(pc,small-pad) {
-         @include child-margin(50px,60px);
+    @include rwd-screen(pc) {
+         @include child-margin(40px,60px);
+    }
+    @include rwd-screen(pad) {
+         @include child-margin(40px,40px);
+    }
+    @include rwd-screen(small-pad) {
+         @include child-margin(40px,30px);
     }
     @include rwd-screen(phone) {
          @include child-margin(0px,40px);

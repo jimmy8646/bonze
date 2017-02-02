@@ -156,6 +156,19 @@ function bonze_bs_preprocess_node(&$variables, $hook){
 
   if($variables['view_mode']=='vm_2'){
 
+    $colClass1 ="col-lg-4 col-md-3 col-sm-4 col-xs-12";
+    $colClass2 ="col-lg-8 col-md-9 col-sm-8 col-xs-12";
+
+      //dpm($variables);
+        $variables['content']['ds_user_picture']['#prefix']='<div class ="clear-margin"><div class ="row"><div class ="field-wrapper field-perfile '.$colClass1.'"><div class ="content-wrapper">';
+        $variables['content']['ds_user_picture']['#suffix']='</div></div>';
+        //$variables['content']['author']['#suffix']='</div></div>';
+        $variables['content']['title']['#prefix']='<div class ="field-wrapper field-content field-margin row middle-xs '.$colClass2.'"><div class ="content-wrapper">';
+        $variables['content']['body']['#suffix']='</div></div></div></div>';
+  }
+
+  if($variables['view_mode']=='vm_3'){
+
     $colClass1 ="col-xs-12";
 
       //dpm($variables);

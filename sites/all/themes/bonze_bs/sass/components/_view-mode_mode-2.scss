@@ -1,37 +1,59 @@
 .view-mode-vm_2 {
-    position: relative;
-    @include rwd-screen(pc) {
-         @include child-margin(20px,10px);
+    height: 100%;
+    @include box-shadow(0px 1px 5px 1px #DDDDDD);
+    margin-right: 5px;
+
+    .clear-margin {
+        @include child-margin(0px,0px);
     }
-    @include rwd-screen(pad,phone) {
-         @include child-margin(20px,10px);
-    }
-    //perfile info
-    .field-perfile {
-        .perfile-wrapper {}
-    }
-    //artcle info
-    .content-wrapper {
-        position: relative;
+
+    .field-margin {
         @include child-margin(0px,10px);
-        //@extend .border_mode-1;
     }
 
-    .field-name-ds-user-picture {
-        border: 2px solid #98ACC0;
-        border-radius: 50%;
-        position: relative;
-        overflow: hidden;
-        max-width: 50px;
+    .field-perfile.field-wrapper {
+        .field-name-ds-user-picture {
+            a {
+                position: relative;
+                overflow: hidden;
+                display: block;
+
+                &:after {
+                    box-sizing: border-box;
+                    content: '';
+                    position: absolute;
+                    @include rwd-screen(pc,small-pad) {
+                        right: 0;
+                        top: 0;
+                        @include size(0px,100%);
+                        border-style: solid;
+                        border-color: rgba(0,0,0,0) #ffffff rgba(0,0,0,0) rgba(0,0,0,0);
+                        border-width: 720px 200px 0 0;
+                    }
+                    @include rwd-screen(phone) {
+                        right: 0;
+                        top: 0;
+                        @include size(0px,100%);
+                        border-style: solid;
+                        border-color: rgba(0,0,0,0) rgba(0,0,0,0) #ffffff rgba(0,0,0,0);
+                        border-width: 0 0 150px 480px;
+                    }
+                }
+            }
+        }
     }
 
-    .field-name-author {
-        text-align: center;
-        padding: 10px;
-        @include rwd-coding(display,none,none,none,none);
-    }
-
-    .field-name-field-tag {
-        @extend .field-tag_mode-1;
+    .field-content.field-wrapper {
+        .content-wrapper {
+            box-sizing: border-box;
+            padding: 40px;
+            @include rwd-screen(pc,small-pad) {
+                padding-left: 10px;
+            }
+            @include rwd-screen(phone) {
+                padding-top: 0;
+            }
+            //@include rwd-coding(background,red,blue,green,red);
+        }
     }
 }

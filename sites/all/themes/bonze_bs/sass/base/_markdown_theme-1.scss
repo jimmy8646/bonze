@@ -24,14 +24,6 @@ article {
         margin-top: 1em;
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5 {
-        font-family: Georgia, Palatino, serif;
-    }
-
     dl,
     h1,
     h2,
@@ -42,6 +34,28 @@ article {
         margin-bottom: 16px;
         padding: 0;
     }
+
+    h2{
+      margin-top: 3em;
+      margin-bottom: 25px;
+    }
+
+    h3{
+      margin-top: 2.5em;
+      margin-bottom: 20px;
+      color: #2A3E67;
+      font-weight: bold;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-family: Georgia, Palatino, serif;
+    }
+
+
 
     // h1 {
     //     font-size: 48px;
@@ -206,9 +220,10 @@ article {
     }
 
     blockquote {
-        border-left: 0.5em solid #eee;
-        padding: 0 0 0 2em;
+        border-left: 0.5em solid #DCDCDC;
+        padding: 1em 1em;
         margin-left: 0;
+        margin-top: 1.5em;
     }
 
     blockquote cite {

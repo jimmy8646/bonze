@@ -195,21 +195,22 @@ jQuery(document).ready(function($) {
         })
 
 
-        $once = 0;
-        $(window).scroll(function() {
-            if ($(window).width() > 1200) {
-                if ($(window).scrollTop() > $($startItem).innerHeight() + 300 +
-                    $startItemOffset.top && $(window).scrollTop() < $endItemOffset.top - $(window).height()) {
-                    if ($once == 1 && i % 2 == 0) {
-                        $('.sidebarNav_button').trigger('click');
-                    }
-                    $once++;
-                }
-            }
-
-
-
-        })
+        //auto close sidebar
+        // $once = 0;
+        // $(window).scroll(function() {
+        //     if ($(window).width() > 1200) {
+        //         if ($(window).scrollTop() > $($startItem).innerHeight() + 300 +
+        //             $startItemOffset.top && $(window).scrollTop() < $endItemOffset.top - $(window).height()) {
+        //             if ($once == 1 && i % 2 == 0) {
+        //                 $('.sidebarNav_button').trigger('click');
+        //             }
+        //             $once++;
+        //         }
+        //     }
+        //
+        //
+        //
+        // })
 
     }
 

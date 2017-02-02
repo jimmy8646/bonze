@@ -28,7 +28,7 @@
         border-radius: 50%;
         position: relative;
         overflow: hidden;
-        @include rwd-coding(max-width,100%,80px,60px,60px);
+        @include rwd-coding(max-width,100%,100%,60px,60px);
         @include rwd-coding(border-width,5px,3px,3px,2px);
     }
 

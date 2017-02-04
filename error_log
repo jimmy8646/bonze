@@ -1,3 +1,4 @@
 [22-Jan-2017 14:37:43 Asia/Chongqing] PHP Fatal error:  Class 'Drupal\user\Entity\User' not found in /home1/undoim/.composer/vendor/drush/drush/lib/Drush/Boot/DrupalBoot.php on line 571
 [22-Jan-2017 14:37:48 Asia/Chongqing] PHP Fatal error:  Class 'Drupal\user\Entity\User' not found in /home1/undoim/.composer/vendor/drush/drush/lib/Drush/Boot/DrupalBoot.php on line 571
 [22-Jan-2017 14:39:39 Asia/Chongqing] PHP Fatal error:  Class 'Drupal\user\Entity\User' not found in /home1/undoim/.composer/vendor/drush/drush/lib/Drush/Boot/DrupalBoot.php on line 571
+[30-Jan-2017 12:46:33 Asia/Chongqing] PHP Fatal error:  Call to undefined function file_type_load_all() in /home1/undoim/public_html/eachbonze/sites/all/modules/picture/picture.install on line 91
